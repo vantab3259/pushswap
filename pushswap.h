@@ -14,5 +14,8 @@ int					ft_strncmp(const char *s1, const char *s2, size_t n);
 
 //lst utils
 t_lst				*ft_lstnew(int nbr);
-void				ft_lstadd_back(t_lst *lst, t_lst *new);
+void				*ft_lstadd_back(t_lst *lst, t_lst *next);
 void				afficherListe(t_lst *list);
+void 				push_number(t_lst **pile_a, int new_data);
+void    			pile_addback(t_lst **lst, t_lst *new);
+t_lst    			*pile_last(t_lst *lst);
