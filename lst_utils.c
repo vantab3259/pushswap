@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:21:20 by mudoh             #+#    #+#             */
-/*   Updated: 2023/03/14 22:01:45 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/03/19 00:10:12 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,17 @@ void	ft_lstadd_back(t_lst *lst, t_lst *new)
 	new->next = NULL;
 	new->prev = lst;
 	new->index = lst->index + 1;
+}
+
+void	afficherListe(t_lst *list)
+{
+	t_lst	*tmp;
+
+	tmp = list;
+	while (tmp != NULL)
+	{
+		printf("%d ", tmp->val);
+		tmp = tmp->next;
+	}
+	printf("\n");
 }

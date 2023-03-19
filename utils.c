@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 15:34:07 by mudoh             #+#    #+#             */
-/*   Updated: 2023/03/14 22:14:41 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/03/19 00:07:53 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_atoi(char *n)
 {
-	int number;
-	int i;
+	int	number;
+	int	i;
 
 	i = 0;
 	number = 0;
@@ -26,7 +26,6 @@ int	ft_atoi(char *n)
 			number = (n[i] - '0') + (number * 10);
 			i++;
 		}
-		ft_printf("%d\n", number);
 		return (number);
 	}
 	else
@@ -35,7 +34,7 @@ int	ft_atoi(char *n)
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	if (n == 0)

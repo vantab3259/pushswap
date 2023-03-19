@@ -1,4 +1,4 @@
-#include "ex0.h"
+/*#include "ex0.h"
 
 int estVide(t_list *liste)
 {
@@ -10,7 +10,7 @@ void afficherListe(t_list *list)
     while(tmp != NULL)
     {
         printf("%d", tmp->val);
-        /* On avance d'une case */
+        On avance d'une case 
         tmp = tmp->next;
     }
 	printf("\n");
@@ -125,4 +125,4 @@ int main(int argc, char **argv)
 	afficherListe(list1);
 	list1 = sup_element_fin(list1);
 	afficherListe(list1);
-}
+}*/
