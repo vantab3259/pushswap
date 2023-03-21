@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:32:49 by mudoh             #+#    #+#             */
-/*   Updated: 2023/03/20 00:18:23 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/03/21 05:57:52 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,21 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	
-	/*swap_a(a);
-	print_list(a);
-	push_b(&a, &b);
-	rotate_a(&a);*/
-	reverse_rotate_a(&a);
 
- 	print_list(a); 
+	print_list(a);
+	print_list(b);
+	push_a(&a, &b);
+	print_list(a);
+	print_list(b);
+	reverse_rotate_all(&a, &b);
+	print_list(b);
+ 	print_list(a);
+	/* swap_all(a, b);
+	print_list(b);
+ 	print_list(a); */
+	/* rotate_all(&a, &b);
+	print_list(b);
+ 	print_list(a); */
 
 	return (0);
 }

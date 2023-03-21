@@ -6,81 +6,128 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 21:36:33 by mudoh             #+#    #+#             */
-/*   Updated: 2023/03/20 00:18:38 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/03/21 06:11:50 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	swap_a(t_lst *lst)
-{
-	int	tmp;
-
-	tmp = lst->val;
-	lst->val = lst->next->val;
-	lst->next->val = tmp;
-}
-void	swap_b(t_lst *lst)
-{
-	int	tmp;
-
-	tmp = lst->val;
-	lst->val = lst->next->val;
-	lst->next->val = tmp;
-}
-
 void	push_b(t_lst **pile_a, t_lst **pile_b)
 {
-	t_lst	*temp;
- 	temp = ft_lst_cut_head_and_save(pile_a);
+	if(*pile_a != NULL)
+	{
+		t_lst	*temp;
+ 		temp = ft_lst_cut_head_and_save(pile_a);
 
-	pile_addback(pile_b, temp);	
+		pile_addback(pile_b, temp);
+		ft_printf("pa\n");
+	}
 }
 
 void	push_a(t_lst **pile_a, t_lst **pile_b)
 {
-	t_lst	*temp;
- 	temp = ft_lst_cut_head_and_save(pile_b);
+	if(*pile_b != NULL)
+	{
+		t_lst	*temp;
+ 		temp = ft_lst_cut_head_and_save(pile_b);
 
-	pile_addback(pile_a, temp);
+		pile_addback(pile_a, temp);
+		ft_printf("pa\n");
+	}
+}
+
+void	swap_a(t_lst *lst)
+{
+	
+	if(lst->next != NULL && lst != NULL)
+	{
+		int	tmp;
+		
+		tmp = lst->val;
+		lst->val = lst->next->val;
+		lst->next->val = tmp;
+		ft_printf("sa\n");
+	}
+}
+void	swap_b(t_lst *lst)
+{
+	if(lst->next != NULL && lst != NULL)
+	{
+		int	tmp;
+
+		tmp = lst->val;
+		lst->val = lst->next->val;
+		lst->next->val = tmp;
+		ft_printf("sb\n");
+	}
 }
 
 void	rotate_a(t_lst **lst)
 {
-	t_lst	*temp;
- 	temp = ft_lst_cut_head_and_save(lst);
+	if(*lst != NULL)
+	{
+		t_lst	*temp;
+ 		temp = ft_lst_cut_head_and_save(lst);
 
-	pile_addback(lst, temp);
+		pile_addback(lst, temp);
+		ft_printf("ra\n");
+	}
 }
 
 void	rotate_b(t_lst **lst)
 {
-	t_lst	*temp;
- 	temp = ft_lst_cut_head_and_save(lst);
+	if(*lst != NULL)
+	{
+		t_lst	*temp;
+ 		temp = ft_lst_cut_head_and_save(lst);
 
-	pile_addback(lst, temp);
+		pile_addback(lst, temp);
+		ft_printf("r\n");
+	}
 }
 
 void	reverse_rotate_a(t_lst **lst)
 {
-	t_lst	*temp;
- 	temp = ft_lst_cut_end_and_save(*lst);
-	
-	pile_addfront(lst, &temp);
-	print_list(*lst);
+	if(*lst != NULL)
+	{
+		t_lst	*temp;
+ 		temp = ft_lst_cut_end_and_save(*lst);
+
+		pile_addfront(lst, &temp);
+		ft_printf("rra\n");
+	}
 }
 
-t_lst	*ft_lst_cut_end_and_save(t_lst	*lst_a)
+void	reverse_rotate_b(t_lst **lst)
 {
-	t_lst	*new;
-	t_lst	*temoin;
-	
-	new = lst_a;
-	while(new->next != NULL)
+	if(*lst != NULL)
 	{
-		temoin = new; 
-		new = new->next;
+		t_lst	*temp;
+ 		temp = ft_lst_cut_end_and_save(*lst);
+
+		pile_addfront(lst, &temp);
+		ft_printf("rrb\n");
 	}
-	temoin->next = NULL;
-	return(new);
 }
+
+void	swap_all(t_lst *lsta, t_lst *lstb)
+{
+	swap_b(lstb);
+	swap_a(lsta);
+	ft_printf("rr\n");
+}
+
+void	rotate_all(t_lst **lsta, t_lst **lstb)
+{
+	rotate_b(lstb);
+	rotate_a(lsta);
+	ft_printf("rr\n");
+}
+
+void	reverse_rotate_all(t_lst **lsta, t_lst **lstb)
+{
+	reverse_rotate_b(lstb);
+	reverse_rotate_a(lsta);
+	ft_printf("rrr\n");
+}
+

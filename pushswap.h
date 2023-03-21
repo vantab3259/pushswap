@@ -33,4 +33,7 @@ void				push_a(t_lst **pile_a, t_lst **pile_b);
 void				rotate_a(t_lst **lst);
 void				rotate_b(t_lst **lst);
 void				reverse_rotate_a(t_lst **lst);
-void				reverse_rotate_b(t_lst *lst);
+void				reverse_rotate_b(t_lst **lst);
+void				swap_all(t_lst *lsta, t_lst *lstb);
+void				rotate_all(t_lst **lsta, t_lst **lstb);
+void				reverse_rotate_all(t_lst **lsta, t_lst **lstb);

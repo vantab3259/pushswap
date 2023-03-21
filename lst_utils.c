@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:21:20 by mudoh             #+#    #+#             */
-/*   Updated: 2023/03/20 00:17:19 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/03/21 03:35:04 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,21 @@ t_lst	*ft_lst_cut_head_and_save(t_lst	**lst_a)
 	return(new);
 }
 
-/* t_lst	*ft_lst_cut_end_and_save(t_lst	**lst_a)
+t_lst	*ft_lst_cut_end_and_save(t_lst	*lst_a)
 {
 	t_lst	*new;
-
-	new = *lst_a;
-	while(new->next != NULL)
-		new = new->next;
+	t_lst	*temoin;
 	
-	new->next = *lst_a;
+	new = lst_a;
+	while(new->next != NULL)
+	{
+		temoin = new; 
+		new = new->next;
+	}
+	temoin->next = NULL;
 	return(new);
-} */
+}
+
 
 t_lst    *pile_last(t_lst *lst)
 {
@@ -105,10 +109,7 @@ void    pile_addfront(t_lst **lst, t_lst **new)
 		*lst = *new;
 	else
 		(*new)->next = *lst;
-	printf("add front = ");
 	*lst = *new;
-	print_list(*lst);
-	printf("\n");
 }
 
 void push_number(t_lst **pile_a, int new_data)
