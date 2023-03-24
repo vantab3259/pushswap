@@ -12,6 +12,8 @@ typedef struct s_lst
 //utils
 int					ft_atoi(char *n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
+int					how_many_element(t_lst *lst);
+int					how_many_part(t_lst *lst);
 
 //lst utils
 t_lst				*ft_lstnew(int nbr);
@@ -24,6 +26,7 @@ void    			pile_addback(t_lst **lst, t_lst *new);
 void				print_list(t_lst *list);
 void 				push_number(t_lst **pile_a, int new_data);
 void				pile_addfront(t_lst **lst, t_lst **new);
+void				firststep(t_lst *lst_a, t_lst *lst_b);
 
 //command
 void				swap_a(t_lst *lst);

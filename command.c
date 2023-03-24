@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 21:36:33 by mudoh             #+#    #+#             */
-/*   Updated: 2023/03/21 06:11:50 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/03/24 22:18:42 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	push_b(t_lst **pile_a, t_lst **pile_b)
  		temp = ft_lst_cut_head_and_save(pile_a);
 
 		pile_addback(pile_b, temp);
-		ft_printf("pa\n");
+		ft_printf("pb\n");
 	}
 }
 
@@ -82,7 +82,7 @@ void	rotate_b(t_lst **lst)
  		temp = ft_lst_cut_head_and_save(lst);
 
 		pile_addback(lst, temp);
-		ft_printf("r\n");
+		ft_printf("rb\n");
 	}
 }
 

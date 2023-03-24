@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:21:20 by mudoh             #+#    #+#             */
-/*   Updated: 2023/03/21 03:35:04 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/03/24 22:19:21 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ void	*ft_lstadd_back(t_lst *lst, t_lst *next)
 	new->prev = lst;
 	new->index = lst->index + 1;
 }
+
 
 
 
