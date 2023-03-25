@@ -27,6 +27,7 @@ void				print_list(t_lst *list);
 void 				push_number(t_lst **pile_a, int new_data);
 void				pile_addfront(t_lst **lst, t_lst **new);
 void				firststep(t_lst *lst_a, t_lst *lst_b);
+void				index_inti(t_lst *lst);
 
 //command
 void				swap_a(t_lst *lst);

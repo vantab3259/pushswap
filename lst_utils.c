@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:21:20 by mudoh             #+#    #+#             */
-/*   Updated: 2023/03/24 22:19:21 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/03/25 19:43:33 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ t_lst	*ft_lstnew(int nbr)
 	new->val = nbr;
 	new->index = 0;
 	new->next = NULL;
-	new->prev = NULL;
 	return (new);
 }
 

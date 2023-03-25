@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:32:49 by mudoh             #+#    #+#             */
-/*   Updated: 2023/03/24 22:05:36 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/03/25 23:57:40 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,14 @@ int	main(int argc, char **argv)
 		ft_lstadd_back(a, ft_lstnew(ft_atoi(argv[i])));
 		i++;
 	}
+	push_b(&a, &b);
+	push_b(&a, &b);
+	push_b(&a, &b);
+	printf("pile a: ");
 	print_list(a);
+	printf("pile b: ");
 	print_list(b);
-	firststep(a, b);
-	printf("%d\n", how_many_part(a));
+	printf("nombre d'element dans ma pile b: %d\n", how_many_element(b));
+
 	return (0);
 }
