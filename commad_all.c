@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushswap.c                                         :+:      :+:    :+:   */
+/*   commad_all.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/12 15:32:49 by mudoh             #+#    #+#             */
-/*   Updated: 2023/03/28 00:09:00 by mudoh            ###   ########.fr       */
+/*   Created: 2023/03/27 18:46:16 by mudoh             #+#    #+#             */
+/*   Updated: 2023/03/27 18:53:32 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	main(int argc, char **argv)
+void	swap_all(t_lst *lsta, t_lst *lstb, char *ss)
 {
-	t_lst *a;
-	t_lst *b;
-	t_tab *tab;
-	int i;
+	swap(lstb, "");
+	swap(lsta, "");
+	ft_printf("%s\n", ss);
+}
 
-	i = 2;
-	tab = malloc(sizeof(tab));
-	if (!tab)
-		return (1);
-	a = lstnew(ft_atoi(argv[1]), tab);
-	if (!a)
-		return (free(tab), 1);
-	b = NULL;
-	while (i < argc)
-	{
-		pile_addback(&a, lstnew(ft_atoi(argv[i]), tab));
-		i++;
-	}
-	printf("%d\n", search(a, 5));
-	print_list(a);
-	return (0);
+void	rotate_all(t_lst **lsta, t_lst **lstb, char *rr)
+{
+	rotate(lstb, "");
+	rotate(lsta, "");
+	ft_printf("%s\n", rr);
+}
+
+void	reverse_rotate_all(t_lst **lsta, t_lst **lstb, char *rra)
+{
+	reverse_rotate(lstb, "");
+	reverse_rotate(lsta, "");
+	ft_printf("%s\n", rra);
 }

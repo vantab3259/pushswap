@@ -6,128 +6,58 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 21:36:33 by mudoh             #+#    #+#             */
-/*   Updated: 2023/03/24 22:18:42 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/03/27 19:56:49 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	push_b(t_lst **pile_a, t_lst **pile_b)
+void	push_one_in_second(t_lst **pile_one, t_lst **pile_second, char *mesg)
 {
-	if(*pile_a != NULL)
-	{
-		t_lst	*temp;
- 		temp = ft_lst_cut_head_and_save(pile_a);
+	t_lst *temp;
 
-		pile_addback(pile_b, temp);
-		ft_printf("pb\n");
+	if (*pile_one != NULL)
+	{
+		temp = lst_cut_head_and_save(pile_one);
+		pile_addfront(pile_second, &temp);
+		printf("%s\n", mesg);
 	}
 }
 
-void	push_a(t_lst **pile_a, t_lst **pile_b)
+void	swap(t_lst *lst, char *mesg)
 {
-	if(*pile_b != NULL)
-	{
-		t_lst	*temp;
- 		temp = ft_lst_cut_head_and_save(pile_b);
+		int tmp;
 
-		pile_addback(pile_a, temp);
-		ft_printf("pa\n");
-	}
-}
-
-void	swap_a(t_lst *lst)
-{
-	
-	if(lst->next != NULL && lst != NULL)
+	if (lst->next != NULL && lst != NULL)
 	{
-		int	tmp;
-		
 		tmp = lst->val;
 		lst->val = lst->next->val;
 		lst->next->val = tmp;
-		ft_printf("sa\n");
-	}
-}
-void	swap_b(t_lst *lst)
-{
-	if(lst->next != NULL && lst != NULL)
-	{
-		int	tmp;
-
-		tmp = lst->val;
-		lst->val = lst->next->val;
-		lst->next->val = tmp;
-		ft_printf("sb\n");
+		printf("%s\n", mesg);
 	}
 }
 
-void	rotate_a(t_lst **lst)
+void	rotate(t_lst **lst, char *mesg)
 {
-	if(*lst != NULL)
-	{
-		t_lst	*temp;
- 		temp = ft_lst_cut_head_and_save(lst);
+	t_lst	*temp;
 
+	if (*lst != NULL)
+	{
+		temp = lst_cut_head_and_save(lst);
 		pile_addback(lst, temp);
-		ft_printf("ra\n");
+		printf("%s\n", mesg);
 	}
 }
 
-void	rotate_b(t_lst **lst)
+void	reverse_rotate(t_lst **lst, char *mesg)
 {
-	if(*lst != NULL)
+	t_lst	*temp;
+
+	if (*lst != NULL)
 	{
-		t_lst	*temp;
- 		temp = ft_lst_cut_head_and_save(lst);
-
-		pile_addback(lst, temp);
-		ft_printf("rb\n");
-	}
-}
-
-void	reverse_rotate_a(t_lst **lst)
-{
-	if(*lst != NULL)
-	{
-		t_lst	*temp;
- 		temp = ft_lst_cut_end_and_save(*lst);
-
+		temp = lst_cut_end_and_save(*lst);
 		pile_addfront(lst, &temp);
-		ft_printf("rra\n");
+		printf("%s\n",mesg);
 	}
-}
-
-void	reverse_rotate_b(t_lst **lst)
-{
-	if(*lst != NULL)
-	{
-		t_lst	*temp;
- 		temp = ft_lst_cut_end_and_save(*lst);
-
-		pile_addfront(lst, &temp);
-		ft_printf("rrb\n");
-	}
-}
-
-void	swap_all(t_lst *lsta, t_lst *lstb)
-{
-	swap_b(lstb);
-	swap_a(lsta);
-	ft_printf("rr\n");
-}
-
-void	rotate_all(t_lst **lsta, t_lst **lstb)
-{
-	rotate_b(lstb);
-	rotate_a(lsta);
-	ft_printf("rr\n");
-}
-
-void	reverse_rotate_all(t_lst **lsta, t_lst **lstb)
-{
-	reverse_rotate_b(lstb);
-	reverse_rotate_a(lsta);
-	ft_printf("rrr\n");
 }
 

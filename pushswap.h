@@ -1,52 +1,61 @@
 #include "ft_printf/ft_printf.h"
 #include <stdlib.h>
 
+typedef struct s_tab
+{
+	int				value;
+}					t_tab;
+
 typedef struct s_lst
 {
 	int				val;
 	int				index;
 	struct s_lst	*next;
 	struct s_lst	*prev;
+	struct s_tab	*tab;
 }					t_lst;
-
 
 //utils
 int					ft_atoi(char *n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 
-
 //lst utils
-t_lst				*ft_lstnew(int nbr);
-t_lst				*ft_lst_cut_head_and_save(t_lst **lst_a);
-t_lst				*ft_lst_cut_end_and_save(t_lst *lst_a);
-t_lst				*ft_lst_remove_head(t_lst *premiere_position);
-t_lst    			*pile_last(t_lst *lst);
-void				*ft_lstadd_back(t_lst *lst, t_lst *next);
-void    			pile_addback(t_lst **lst, t_lst *new);
-void				print_list(t_lst *list);
-void 				push_number(t_lst **pile_a, int new_data);
+t_lst				*lstnew(int nbr, t_tab *tab);
+t_lst				*lst_cut_head_and_save(t_lst **lst_a);
+t_lst				*lst_cut_end_and_save(t_lst *lst_a);
+t_lst				*lst_remove_head(t_lst *premiere_position);
+t_lst				*lstlast(t_lst *lst);
+
+//pile utils
+void				pile_addback(t_lst **lst, t_lst *new);
+void				push_number(t_lst **pile_a, int new_data);
 void				pile_addfront(t_lst **lst, t_lst **new);
 void				firststep(t_lst **lst_a, t_lst **lst_b);
 void				index_init(t_lst **lst);
-
+void				make_order(t_lst **lst);
 
 //lst veriftruc
 
-int					how_many_element(t_lst *lst);
+void				print_list(t_lst *list);
 int					how_many_part(t_lst *lst);
 int					a_is_sorted(t_lst *lst_a);
 int					tri_trois_a(t_lst **lst);
 int					list_is_range(t_lst *lst);
 
 //command
-void				swap_a(t_lst *lst);
-void				swap_b(t_lst *lst);
-void				push_b(t_lst **pile_a, t_lst **pile_b);
-void				push_a(t_lst **pile_a, t_lst **pile_b);
-void				rotate_a(t_lst **lst);
-void				rotate_b(t_lst **lst);
-void				reverse_rotate_a(t_lst **lst);
-void				reverse_rotate_b(t_lst **lst);
-void				swap_all(t_lst *lsta, t_lst *lstb);
-void				rotate_all(t_lst **lsta, t_lst **lstb);
-void				reverse_rotate_all(t_lst **lsta, t_lst **lstb);
+void				swap(t_lst *lst, char *mesg);
+void				push_one_in_second(t_lst **pile_one, t_lst **pile_second, char *mesg);
+void				rotate(t_lst **lst, char *mesg);
+void				reverse_rotate(t_lst **lst, char *mesg);
+
+//command all
+void				rotate_all(t_lst **lsta, t_lst **lstb, char *rr);
+void				reverse_rotate_all(t_lst **lsta, t_lst **lstb, char *rra);
+void				swap_all(t_lst *lsta, t_lst *lstb, char *ss);
+
+//tri
+
+int					search(t_lst *lst, int valeur);
+int					is_minim(t_lst *lst);
+//les oublier
+//void				*ft_lstadd_back(t_lst *lst, t_lst *next);
