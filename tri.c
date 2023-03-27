@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 19:35:28 by mudoh             #+#    #+#             */
-/*   Updated: 2023/03/27 01:51:20 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/03/27 01:56:36 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void	firststep(t_lst **lst_a, t_lst **lst_b)
 			push_b(lst_a, lst_b);
 		}
 	index_init(lst_b);
+	tri_trois_a(lst_a);
 	/* 	else
 		while(lst_a->next->next->next)
 		{

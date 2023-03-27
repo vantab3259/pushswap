@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:32:49 by mudoh             #+#    #+#             */
-/*   Updated: 2023/03/27 01:47:37 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/03/27 01:54:44 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ int	main(int argc, char **argv)
 		ft_lstadd_back(a, ft_lstnew(ft_atoi(argv[i])));
 		i++;
 	}
-	index_init(&a);
+	firststep(&a, &b);
 	printf("%d\n", a->index);
 	print_list(a);
+	print_list(b);
 	return (0);
 }
