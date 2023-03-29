@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:32:49 by mudoh             #+#    #+#             */
-/*   Updated: 2023/03/28 00:09:00 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/03/29 18:36:43 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,26 @@ int	main(int argc, char **argv)
 {
 	t_lst *a;
 	t_lst *b;
-	t_tab *tab;
+	t_tab *info;
 	int i;
 
 	i = 2;
-	tab = malloc(sizeof(tab));
-	if (!tab)
+	info = malloc(sizeof(info));
+	if (!info)
 		return (1);
-	a = lstnew(ft_atoi(argv[1]), tab);
+	a = lstnew(ft_atoi(argv[1]), info);
 	if (!a)
-		return (free(tab), 1);
+		return (free(info), 1);
 	b = NULL;
 	while (i < argc)
 	{
-		pile_addback(&a, lstnew(ft_atoi(argv[i]), tab));
+		pile_addback(&a, lstnew(ft_atoi(argv[i]), info));
 		i++;
 	}
-	printf("%d\n", search(a, 5));
 	print_list(a);
+	print_list(b);
+	execute(&a, &b, info);
+	print_list(a);
+	print_list(b);
 	return (0);
 }

@@ -6,78 +6,148 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 20:19:54 by mudoh             #+#    #+#             */
-/*   Updated: 2023/03/28 00:36:13 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/03/29 19:25:53 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-
-int		is_mini(t_lst *lst)
+int	search(t_lst *lst, int valeur)
 {
-	t_lst *tmp;
-	int i;
-	int vmin;
-	
-	i = 0;
-	tmp = lst;
-	vmin = tmp->val;
-	while(tmp->next)
-	{	
-		tmp = tmp->next;
-		if(tmp->val < vmin)
-		{
-			vmin = tmp->val;
-			i = tmp->index;
-		}
-		printf("vmin;%d\n\n", vmin);
-		printf("tmpval;%d\n\n", tmp->val);
-		printf("i;%d\n\n", i);
-	}
-	printf("%d\n", i);
-	return(i);
-}
+	t_lst	*tmp;
+	int		i;
+	int		v;
 
-int		search(t_lst *lst, int valeur)
-{
-	t_lst *tmp;
-	int i;
-	int v;
-	
-	
-	i = 200; 
+	i = 20000;
 	tmp = lst;
 	v = tmp->val;
-	index_init(&tmp);
-	while(tmp->next)
+	while (tmp->next)
 	{
-		if(tmp->val < v && tmp->val > valeur)
+		if (tmp->val <= v && tmp->val > valeur)
 		{
 			v = tmp->val;
 			i = tmp->index;
 		}
 		tmp = tmp->next;
 	}
-	if(i == 200)
-		return(is_mini(lst));
-	return(i);
+	if (i == 20000)
+		return (is_minim(lst));
+	return (i);
 }
 
-void	firststep(t_lst **lst_a, t_lst **lst_b)
+int	wich_combo_do(int index_a, int index_b, t_lst *a, t_lst *b)
 {
-	index_init(lst_a);
-	if (how_many_part(*lst_a) == 0)
-		while ((*lst_a)->next->next->next)
-		{
-			push_one_in_second(lst_a, lst_b, "pb");
-		}
-	index_init(lst_b);
-	/* 	else
-		while(lst_a->next->next->next)
-		{
-			if(lst_a->val < 10)
-				push_b(&lst_a, &lst_b);
-		}
-		print_list(lst_a);
-		print_list(lst_b); */
+	int	rr;
+	int	rarrb;
+	int	rrarb;
+	int	rrr;
+
+	rrr = 1 + (lstlast(b)->index - index_b);
+	if ((lstlast(a)->index - index_a) >= (lstlast(b)->index - index_b))
+		rrr = 1 + (lstlast(a)->index - index_a);
+	rr = index_b;
+	if (index_a >= index_b)
+		rr = index_a;
+	rarrb = index_a + (lstlast(b)->index - index_b) + 1;
+	rrarb = index_b + (lstlast(a)->index - index_a) + 1;
+	if (rr <= rarrb && rr <= rrr && rr <= rrarb)
+		return (0);
+	if (rrr <= rarrb && rrr <= rr && rr <= rrarb)
+		return (1);
+	if (rarrb <= rarrb && rr <= rrr && rr <= rrarb)
+		return (2);
+	if (rrarb <= rarrb && rr <= rrr && rr <= rarrb)
+		return (3);
 }
+
+int	how_many_moves(int index_a, int index_b, t_lst *a, t_lst *b)
+{
+	int	rr;
+	int	rarrb;
+	int	rrarb;
+	int	rrr;
+
+	rrr = 1 + (lstlast(b)->index - index_b);
+	if ((lstlast(a)->index - index_a) > (lstlast(b)->index - index_b))
+		rrr = 1 + (lstlast(a)->index - index_a);
+	rr = index_b;
+	if (index_a > index_b)
+		rr = index_a;
+	rarrb = index_a + (lstlast(b)->index - index_b) + 1;
+	rrarb = index_b + (lstlast(a)->index - index_a) + 1;
+	if (rr < rarrb && rr < rrr && rr < rrarb)
+		return (rr);
+	if (rrr < rarrb && rrr < rr && rr < rrarb)
+		return (rrr);
+	if (rarrb < rarrb && rr < rrr && rr < rrarb)
+		return (rarrb);
+	if (rrarb < rarrb && rr < rrr && rr < rarrb)
+		return (rrarb);
+}
+t_tab	find_best_nbr(t_lst *a, t_lst *b)
+{
+	t_tab	info;
+
+	info.calcul = 5000;
+	info.val = b->val;
+	while (b->next)
+	{
+		if (how_many_moves(search(a, b->val), b->index, a, b) < info.calcul)
+		{
+			info.calcul = how_many_moves(search(a, b->val), b->index, a, b);
+			info.val = b->val;
+			info.ia = search(a, b->val);
+			info.ib = b->index;
+		}
+		b = b->next;
+	}
+	return (info);
+}
+
+void	execute(t_lst **a, t_lst **b, t_tab *info)
+{
+	t_tab tmpinfo;
+
+	index_init(a);
+	if (how_many_part(*a) == 0)
+		while ((*a)->next->next->next)
+		{
+			push_one_in_second(a, b, "pb");
+		}
+	index_init(b);
+	tmpinfo = find_best_nbr(*a, *b);
+	printf("%d\n", tmpinfo.ia);
+	tmpinfo.mouv = wich_combo_do(tmpinfo.ia, tmpinfo.ib, *a, *b);
+	
+/* 	if (tmpinfo.mouv == 0)
+	 	mouv_if_rr(a, b, tmpinfo);
+	if (tmpinfo.mouv == 1)
+		mouv_if_rrr(a, b, tmpinfo);
+	if (tmpinfo.mouv == 2)
+		mouv_if_rarrb(a, b, tmpinfo);
+	if (tmpinfo.mouv == 3)
+		mouv_if_rrarb(a, b, tmpinfo); */
+}
+/*
+//pantheon des fonctions
+int	searchwhile(t_lst *lst_a, t_lst *lst_b)
+{
+	t_lst *a;
+	t_lst *b;
+	int i;
+
+	i = 200;
+	a = lst_a;
+	b = lst_b;
+	index_init(&a);
+	index_init(&b);
+	while (b->next)
+	{
+		if (search(a, b->val) < i)
+		{
+			i = search(a, b->val);
+		}
+		b = b->next;
+	}
+	return (i);
+} */

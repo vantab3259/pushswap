@@ -3,7 +3,13 @@
 
 typedef struct s_tab
 {
-	int				value;
+	int				ia;
+	int				ib;
+	int				calcul;
+	int				val;
+	int				imaxa;
+	int				imaxb;
+	int				mouv;
 }					t_tab;
 
 typedef struct s_lst
@@ -52,10 +58,23 @@ void				reverse_rotate(t_lst **lst, char *mesg);
 void				rotate_all(t_lst **lsta, t_lst **lstb, char *rr);
 void				reverse_rotate_all(t_lst **lsta, t_lst **lstb, char *rra);
 void				swap_all(t_lst *lsta, t_lst *lstb, char *ss);
+int					is_minim(t_lst *lst);
+int					is_max(t_lst *lst);
+
+//mouv
+void					mouv_if_rr(t_lst **a, t_lst **b, t_tab information);
+void					mouv_if_rrr(t_lst **a, t_lst **b, t_tab information);
+void					mouv_if_rarrb(t_lst **a, t_lst **b, t_tab information);
+void					mouv_if_rrarb(t_lst **a, t_lst **b, t_tab information);
 
 //tri
 
 int					search(t_lst *lst, int valeur);
-int					is_minim(t_lst *lst);
+int					how_many_moves(int index_a, int index_b, t_lst *a, t_lst *b);
+int					wich_combo_do(int index_a, int index_b, t_lst *a, t_lst *b);
+t_tab				find_best_nbr(t_lst *a, t_lst *b);
+void				execute(t_lst **a, t_lst **b, t_tab *info);
+
 //les oublier
 //void				*ft_lstadd_back(t_lst *lst, t_lst *next);
+//int					searchwhile(t_lst *lst_a, t_lst *lst_b);
