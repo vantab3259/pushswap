@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 20:19:54 by mudoh             #+#    #+#             */
-/*   Updated: 2023/03/29 19:25:53 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/03 01:31:53 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	search(t_lst *lst, int valeur)
 
 	i = 20000;
 	tmp = lst;
-	v = tmp->val;
-	while (tmp->next)
+	v = is_max(lst);
+	while (tmp)
 	{
 		if (tmp->val <= v && tmp->val > valeur)
 		{
@@ -30,6 +30,7 @@ int	search(t_lst *lst, int valeur)
 		}
 		tmp = tmp->next;
 	}
+	//printf("l'index trouve pour le nombre %d est %d\n", valeur, i);
 	if (i == 20000)
 		return (is_minim(lst));
 	return (i);
@@ -84,49 +85,87 @@ int	how_many_moves(int index_a, int index_b, t_lst *a, t_lst *b)
 	if (rrarb < rarrb && rr < rrr && rr < rarrb)
 		return (rrarb);
 }
+
+void	ft_print_lst(t_lst *lst)
+{
+	//printf(" la liste ressemble a ca :\n");
+	while (lst)
+	{
+		//printf("%d : %d\n\n", lst->index, lst->val);
+		lst = lst->next;
+	}
+}
+
 t_tab	find_best_nbr(t_lst *a, t_lst *b)
 {
 	t_tab	info;
 
 	info.calcul = 5000;
 	info.val = b->val;
-	while (b->next)
+	ft_print_lst(a);
+	ft_print_lst(b);
+	while (b)
 	{
+		// printf("avec ce normbre : %d, je fais ce nombre de move : %d\n",
+		// b->val,
+		// 		how_many_moves(search(a, b->val), b->index, a, b));
 		if (how_many_moves(search(a, b->val), b->index, a, b) < info.calcul)
 		{
 			info.calcul = how_many_moves(search(a, b->val), b->index, a, b);
 			info.val = b->val;
 			info.ia = search(a, b->val);
+			//printf("l'index du grand frere A : %d\n", search(a, b->val));
 			info.ib = b->index;
 		}
 		b = b->next;
 	}
+	// printf("ia = %d ib= %d\n", info.ia, info.ib);
 	return (info);
 }
 
-void	execute(t_lst **a, t_lst **b, t_tab *info)
+void	execute_le_retour(t_lst **a, t_lst **b)
 {
-	t_tab tmpinfo;
-
+	t_tab	tmpinfo;
+	
 	index_init(a);
-	if (how_many_part(*a) == 0)
-		while ((*a)->next->next->next)
-		{
-			push_one_in_second(a, b, "pb");
-		}
 	index_init(b);
 	tmpinfo = find_best_nbr(*a, *b);
-	printf("%d\n", tmpinfo.ia);
 	tmpinfo.mouv = wich_combo_do(tmpinfo.ia, tmpinfo.ib, *a, *b);
-	
-/* 	if (tmpinfo.mouv == 0)
-	 	mouv_if_rr(a, b, tmpinfo);
+	print_list(*a);
+	print_list(*b);
+	if (tmpinfo.mouv == 0)
+		mouv_if_rr(a, b, tmpinfo);
 	if (tmpinfo.mouv == 1)
 		mouv_if_rrr(a, b, tmpinfo);
 	if (tmpinfo.mouv == 2)
 		mouv_if_rarrb(a, b, tmpinfo);
 	if (tmpinfo.mouv == 3)
-		mouv_if_rrarb(a, b, tmpinfo); */
+		mouv_if_rrarb(a, b, tmpinfo);
+}
+
+void	execute(t_lst **a, t_lst **b, t_tab *info)
+{
+	int i;
+	
+	
+	if (how_many_part(*a) == 0)
+	{
+		while ((*a)->next->next->next)
+			push_one_in_second(a, b, "pb");
+	}
+	if (list_is_range(*a) == 0)
+		tri_trois_a(a);
+	index_init(b);
+	index_init(a);
+	i = lstlast(*b)->index;
+	while(i != -1)
+	{
+		execute_le_retour(a, b);
+		i--;
+	}
+	//make_order(a);
+	
+	// execute_le_retour(a, b, info);
 }
 /*
 //pantheon des fonctions

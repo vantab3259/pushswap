@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:32:49 by mudoh             #+#    #+#             */
-/*   Updated: 2023/03/29 18:36:43 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/02 17:12:03 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int	main(int argc, char **argv)
 		pile_addback(&a, lstnew(ft_atoi(argv[i]), info));
 		i++;
 	}
-	print_list(a);
-	print_list(b);
 	execute(&a, &b, info);
 	print_list(a);
 	print_list(b);
