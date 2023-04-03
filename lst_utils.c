@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:21:20 by mudoh             #+#    #+#             */
-/*   Updated: 2023/03/27 19:54:42 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/03 20:27:49 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_lst	*lstnew(int nbr, t_tab *tab)
 t_lst	*lstlast(t_lst *lst)
 {
 	if (!lst)
-		return (0);
+		return (NULL);
 	while (lst->next)
 		lst = lst->next;
 	return (lst);
@@ -74,13 +74,12 @@ t_lst	*lst_cut_end_and_save(t_lst *lst_a)
 	return (new);
 }
 
-
 //les oublier
 
 //void	*ft_lstadd_back(t_lst *lst, t_lst *next)
 //{
 //	t_lst	*new;
-//	
+//
 //	new = next;
 //	while (lst->next)
 //	{

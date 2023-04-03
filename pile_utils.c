@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 19:35:28 by mudoh             #+#    #+#             */
-/*   Updated: 2023/03/28 00:38:09 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/03 20:29:32 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	pile_addback(t_lst **lst, t_lst *new)
 		last = lstlast(*(lst));
 		last->next = new;
 	}
+	new->next = NULL;
 }
 
 void	pile_addfront(t_lst **lst, t_lst **new)
@@ -87,5 +88,3 @@ void	push_number(t_lst **pile_a, int new_data)
 	new_element->next = NULL;
 	pile_addback(pile_a, new_element);
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 20:19:54 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/03 01:31:53 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/03 20:36:37 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,13 @@ int	wich_combo_do(int index_a, int index_b, t_lst *a, t_lst *b)
 	rrarb = index_b + (lstlast(a)->index - index_a) + 1;
 	if (rr <= rarrb && rr <= rrr && rr <= rrarb)
 		return (0);
-	if (rrr <= rarrb && rrr <= rr && rr <= rrarb)
+	if (rrr <= rarrb && rrr <= rr && rrr <= rrarb)
 		return (1);
-	if (rarrb <= rarrb && rr <= rrr && rr <= rrarb)
+	if (rarrb <= rrarb && rarrb <= rrr && rarrb <= rr)
 		return (2);
-	if (rrarb <= rarrb && rr <= rrr && rr <= rarrb)
+	if (rrarb <= rarrb && rrarb <= rrr && rrarb <= rr)
 		return (3);
+	return (2);
 }
 
 int	how_many_moves(int index_a, int index_b, t_lst *a, t_lst *b)
@@ -126,13 +127,15 @@ t_tab	find_best_nbr(t_lst *a, t_lst *b)
 void	execute_le_retour(t_lst **a, t_lst **b)
 {
 	t_tab	tmpinfo;
-	
+
 	index_init(a);
 	index_init(b);
 	tmpinfo = find_best_nbr(*a, *b);
+	// printf("tmpinfo;%d\n", tmpinfo.calcul)
 	tmpinfo.mouv = wich_combo_do(tmpinfo.ia, tmpinfo.ib, *a, *b);
 	print_list(*a);
 	print_list(*b);
+	printf("tmpinfomouv;%d\n", tmpinfo.mouv);
 	if (tmpinfo.mouv == 0)
 		mouv_if_rr(a, b, tmpinfo);
 	if (tmpinfo.mouv == 1)
@@ -145,26 +148,25 @@ void	execute_le_retour(t_lst **a, t_lst **b)
 
 void	execute(t_lst **a, t_lst **b, t_tab *info)
 {
-	int i;
-	
-	
+	int	i;
+
 	if (how_many_part(*a) == 0)
 	{
 		while ((*a)->next->next->next)
-			push_one_in_second(a, b, "pb");
+			push_one_in_second(a, b, "pb\n");
 	}
 	if (list_is_range(*a) == 0)
-		tri_trois_a(a);
+		swap(*a, "sa\n");
 	index_init(b);
 	index_init(a);
 	i = lstlast(*b)->index;
-	while(i != -1)
+	while (i != -1)
 	{
 		execute_le_retour(a, b);
 		i--;
+		
 	}
 	//make_order(a);
-	
 	// execute_le_retour(a, b, info);
 }
 /*
