@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 15:34:07 by mudoh             #+#    #+#             */
-/*   Updated: 2023/03/27 20:11:57 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/03 23:14:11 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,22 @@ int	ft_atoi(char *nptr)
 	sign = 1;
 	num = 0;
 	i = 0;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	if((nptr[i] >= '0' && nptr[i] <= '9'))
 	{
-		if (nptr[i] == '-')
-			sign *= -1;
-		i++;
+		if (nptr[i] == '-' || nptr[i] == '+')
+		{
+			if (nptr[i] == '-')
+				sign *= -1;
+			i++;
+		}
+		while (nptr[i] >= '0' && nptr[i] <= '9')
+		{
+			num = (num * 10) + (nptr[i] - '0');
+			i++;
+		}
+		return (num * sign);
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		num = (num * 10) + (nptr[i] - '0');
-		i++;
-	}
-	return (num * sign);
+	return(1);
 }
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)

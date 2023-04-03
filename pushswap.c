@@ -6,11 +6,16 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:32:49 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/02 17:12:03 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/04 00:38:22 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
+
+
+
+
 
 int	main(int argc, char **argv)
 {
@@ -24,12 +29,14 @@ int	main(int argc, char **argv)
 	if (!info)
 		return (1);
 	a = lstnew(ft_atoi(argv[1]), info);
-	if (!a)
-		return (free(info), 1);
+	if (!a || ft_atoi(argv[1]) == 1)
+		return (printf("Error\n"), free(info), 1);
 	b = NULL;
 	while (i < argc)
 	{
 		pile_addback(&a, lstnew(ft_atoi(argv[i]), info));
+		if (ft_atoi(argv[i]) == 1)
+			return (printf("Error\n"), free(info), 1);
 		i++;
 	}
 	execute(&a, &b, info);
