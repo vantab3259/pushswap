@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 20:19:54 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/03 20:36:37 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/04 23:51:49 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	wich_combo_do(int index_a, int index_b, t_lst *a, t_lst *b)
 		return (2);
 	if (rrarb <= rarrb && rrarb <= rrr && rrarb <= rr)
 		return (3);
-	return (2);
 }
 
 int	how_many_moves(int index_a, int index_b, t_lst *a, t_lst *b)
@@ -79,11 +78,11 @@ int	how_many_moves(int index_a, int index_b, t_lst *a, t_lst *b)
 	rrarb = index_b + (lstlast(a)->index - index_a) + 1;
 	if (rr < rarrb && rr < rrr && rr < rrarb)
 		return (rr);
-	if (rrr < rarrb && rrr < rr && rr < rrarb)
+	if (rrr < rarrb && rrr < rr && rrr < rrarb)
 		return (rrr);
-	if (rarrb < rarrb && rr < rrr && rr < rrarb)
+	if (rarrb < rr && rarrb < rrr && rarrb < rrarb)
 		return (rarrb);
-	if (rrarb < rarrb && rr < rrr && rr < rarrb)
+	if (rrarb < rarrb && rrarb < rrr && rrarb < rr)
 		return (rrarb);
 }
 
@@ -128,14 +127,9 @@ void	execute_le_retour(t_lst **a, t_lst **b)
 {
 	t_tab	tmpinfo;
 
-	index_init(a);
-	index_init(b);
 	tmpinfo = find_best_nbr(*a, *b);
 	// printf("tmpinfo;%d\n", tmpinfo.calcul)
 	tmpinfo.mouv = wich_combo_do(tmpinfo.ia, tmpinfo.ib, *a, *b);
-	print_list(*a);
-	print_list(*b);
-	printf("tmpinfomouv;%d\n", tmpinfo.mouv);
 	if (tmpinfo.mouv == 0)
 		mouv_if_rr(a, b, tmpinfo);
 	if (tmpinfo.mouv == 1)
@@ -156,17 +150,20 @@ void	execute(t_lst **a, t_lst **b, t_tab *info)
 			push_one_in_second(a, b, "pb\n");
 	}
 	if (list_is_range(*a) == 0)
-		swap(*a, "sa\n");
+		swap(a, "sa\n");
 	index_init(b);
-	index_init(a);
 	i = lstlast(*b)->index;
 	while (i != -1)
 	{
+		//print_list(*a);
+		//print_list(*b);
+		index_init(b);
+		index_init(a);
 		execute_le_retour(a, b);
+		//print_list(*a);
 		i--;
-		
 	}
-	//make_order(a);
+	index_init(a);
 	// execute_le_retour(a, b, info);
 }
 /*

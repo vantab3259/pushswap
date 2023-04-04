@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 19:35:28 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/03 20:29:32 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/05 00:03:09 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,30 +28,74 @@ void	index_init(t_lst **lst)
 	tmp->index = i;
 }
 
+// pantheon des fonctions
+// void	make_order(t_lst **lst)
+// {
+// 	t_lst	*tmp;
+// 	int		v1;
+// 	int		i;
+
+// 	i = 0;
+// 	tmp = *lst;
+// 	v1 = tmp->val;
+// 	if(a_is_sorted(tmp) == 1)
+// 		return ;
+// 	while (tmp)
+// 	{
+// 		if (tmp->val >tmp->next->val)
+// 		{
+// 			v1 = tmp->val;
+// 			i = tmp->index;
+// 			break ;
+// 		}
+// 		tmp = tmp->next;
+// 	}
+// 	// printf("v1:%d\n ", v1);
+// 	// printf("i:%d\n ", i);
+// 	if (i < (lstlast(*lst)->index / 2))
+// 	{
+// 		while (i >= 0)
+// 		{
+// 			rotate(lst, "ra\n");
+// 			i--;
+// 		}
+// 	}
+// 	else
+// 	{
+// 		while (i-1 <= lstlast(*lst)->index)
+// 		{
+// 			reverse_rotate(lst, "rra\n");
+// 			i++;
+// 		}
+// 	}
+
+// }
+
 void	make_order(t_lst **lst)
 {
 	t_lst	*tmp;
-	int		vm;
-	int		i;
+	int		ind_min;
+	int		size;
 
-	i = 0;
+	size = lstlast(*lst)->index;
 	tmp = *lst;
-	vm = tmp->val;
-	while (tmp->next)
+	while (tmp)
 	{
-		if (tmp->val < vm)
-		{
-			vm = tmp->val;
-			i = tmp->index;
-		}
+		if (tmp->val == find_min_lst(*lst))
+			ind_min = tmp->index;
 		tmp = tmp->next;
 	}
-	if (i < (lstlast(*lst)->index / 2))
-		while (a_is_sorted(*lst) != 1)
-			rotate(lst, "ra");
-	else
-		while (a_is_sorted(*lst) != 1)
-			reverse_rotate(lst, "ra");
+	if (ind_min < (size + 1) / 2)
+	{
+		while (--ind_min > -1)
+			rotate(lst, "ra\n");
+		return ;
+	}
+	while (ind_min < size + 1)
+	{
+		reverse_rotate(lst, "rra\n");
+		ind_min++;
+	}
 }
 
 void	pile_addback(t_lst **lst, t_lst *new)

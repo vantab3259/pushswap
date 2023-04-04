@@ -6,31 +6,31 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 18:46:16 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/02 17:42:21 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/05 00:33:14 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	swap_all(t_lst *lsta, t_lst *lstb, char *ss)
+void	swap_all(t_lst **lsta, t_lst **lstb, char *ss)
 {
 	swap(lstb, "");
 	swap(lsta, "");
-	ft_printf("%s\n", ss);
+	printf("%s\n", ss);
 }
 
 void	rotate_all(t_lst **lsta, t_lst **lstb, char *rr)
 {
 	rotate(lstb, "");
 	rotate(lsta, "");
-	ft_printf("%s\n", rr);
+	printf("%s\n", rr);
 }
 
-void	reverse_rotate_all(t_lst **lsta, t_lst **lstb, char *rra)
+void	reverse_rotate_all(t_lst **lsta, t_lst **lstb, char *msg)
 {
 	reverse_rotate(lstb, "");
 	reverse_rotate(lsta, "");
-	ft_printf("%s\n", rra);
+	printf("%s", msg);
 }
 
 // return value max

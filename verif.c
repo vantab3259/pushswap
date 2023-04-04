@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:02:27 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/03 19:56:02 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/04 23:51:16 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,27 +38,77 @@ int	how_many_part(t_lst *lst_a)
 	return (i);
 }
 
+// pantheon des fonctions
+// int	list_is_range(t_lst *lst)
+// {
+// 	t_lst	*tmp;
+// 	t_lst	*jump;
+
+// 	tmp = lst;
+// 	while (tmp->next && tmp->val < tmp->next->val)
+// 		tmp = tmp->next;
+// 	if (tmp->next != NULL)
+// 	{
+// 		tmp = tmp->next;
+// 		jump = tmp;
+// 	}
+// 	else
+// 		return (1);
+// 	while (jump->next && jump->val < jump->next->val)
+// 		jump = jump->next;
+// 	if (jump->val < lst->val)
+// 		return (1);
+// 	else
+// 		return (0);
+// }
+
+int	find_max_lst(t_lst *lst)
+{
+	int	max;
+
+	max = lst->val;
+	while (lst)
+	{
+		if (max < lst->val)
+			max = lst->val;
+		lst = lst->next;
+	}
+	return (max);
+}
+
+int	find_min_lst(t_lst *lst)
+{
+	int	min;
+
+	min = lst->val;
+	while (lst)
+	{
+		if (min > lst->val)
+			min = lst->val;
+		lst = lst->next;
+	}
+	return (min);
+}
+
 int	list_is_range(t_lst *lst)
 {
-	t_lst	*tmp;
-	t_lst	*jump;
+	int max;
+	int	min;
 
-	tmp = lst;
-	while (tmp->next && tmp->val < tmp->next->val)
-		tmp = tmp->next;
-	if (tmp->next != NULL)
+	max = find_max_lst(lst);
+	min = find_min_lst(lst);
+	while (lst->next)
 	{
-		tmp = tmp->next;
-		jump = tmp;
+		if (lst->val == max)
+		{
+			if (lst->next->val != min)
+				return (0);
+		}
+		else if (lst->val > lst->next->val)
+			return (0);
+		lst = lst->next;
 	}
-	else
-		return (1);
-	while (jump->next && jump->val < jump->next->val)
-		jump = jump->next;
-	if (jump->val < lst->val)
-		return (1);
-	else
-		return (0);
+	return (1);
 }
 
 int	a_is_sorted(t_lst *lst_a)
@@ -72,7 +122,7 @@ int	a_is_sorted(t_lst *lst_a)
 			return (0);
 		tmp = tmp->next;
 	}
-	printf("liste deja triee!\n");
+	// printf("liste deja triee!\n");
 	return (1);
 }
 
@@ -83,7 +133,7 @@ int	tri_trois_a(t_lst **lst)
 	// {
 	// 	reverse_rotate(lst, "rra");
 	// 	a_is_sorted(*lst);
-	swap(*lst, "sa\n");
+	swap(lst, "sa\n");
 	// }
 	// else
 	// {

@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 17:11:29 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/03 20:48:36 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/05 00:19:30 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	mouv_if_rr(t_lst **a, t_lst **b, t_tab information)
 {
 	t_tab	info;
 
-	printf("je passe ici\n");
+//printf("je passe ici\n");
 	info = information;
 	//printf("index b:%d, index a:%d\n", info.ib, info.ia);
 	while (info.ia != 0 && info.ib != 0)
@@ -40,20 +40,20 @@ void	mouv_if_rr(t_lst **a, t_lst **b, t_tab information)
 
 void	mouv_if_rrr(t_lst **a, t_lst **b, t_tab info)
 {
-	printf("je passe la\n");
+	//printf("je passe la\n");
 	// if (!b || !(*b))
 	// 	printf("wtf c'est la sauce \n");
 	// printf("b : %d\n", (*b)->val);
 	// printf("b : %d\n", (*b)->index);
 	// printf("lstlast b : %d . %d", lstlast(*b)->val, lstlast(*b)->index);
 	// printf("lstlast a : %d . %d", lstlast(*a)->val, lstlast(*a)->index);
-	printf("index b:%d, index a:%d\n", info.ib, info.ia);
+	//printf("index b:%d, index a:%d\n", info.ib, info.ia);
 	info.imaxa = lstlast(*a)->index + 1;
 	info.imaxb = lstlast(*b)->index + 1;
-	printf("index b:%d, index a:%d\n", info.imaxb, info.imaxb);
+	//printf("index b:%d, index a:%d\n", info.imaxb, info.imaxb);
 	while (info.ia != info.imaxa && info.ib != info.imaxb)
 	{
-		reverse_rotate_all(a, b, "rrr");
+		reverse_rotate_all(a, b, "rrr\n");
 		info.ia++;
 		info.ib++;
 	}
@@ -107,7 +107,7 @@ void	mouv_if_rrarb(t_lst **a, t_lst **b, t_tab information)
 {
 	t_tab	info;
 
-	printf("je passe dans le coin\n");
+	//printf("je passe dans le coin\n");
 	info = information;
 	info.imaxa = lstlast(*a)->index + 1;
 	while (info.ia != info.imaxa)
@@ -126,7 +126,7 @@ void	mouv_if_rarrb(t_lst **a, t_lst **b, t_tab information)
 {
 	t_tab info;
 
-	printf("je passe ici bas\n");
+	//printf("je passe ici bas\n");
 	info = information;
 	info.imaxb = lstlast(*b)->index + 1;
 

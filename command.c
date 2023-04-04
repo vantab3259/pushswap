@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 21:36:33 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/03 20:48:13 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/05 00:34:55 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,25 @@ void	push_one_in_second(t_lst **pile_one, t_lst **pile_second, char *mesg)
 		pile_addfront(pile_second, &temp);
 		printf("%s", mesg);
 	}
+	// if(pile_second);
+	// 	index_init(pile_second);
+	// if(pile_one);
+	// 	index_init(pile_one);
 }
 
-void	swap(t_lst *lst, char *mesg)
+void	swap(t_lst **lst, char *mesg)
 {
 	int	tmp;
 
-	if (lst->next != NULL && lst != NULL)
+	if ((*lst)->next != NULL && lst != NULL)
 	{
-		tmp = lst->val;
-		lst->val = lst->next->val;
-		lst->next->val = tmp;
+		tmp = (*lst)->val;
+		(*lst)->val = (*lst)->next->val;
+		(*lst)->next->val = tmp;
 		printf("%s", mesg);
 	}
+	// if(lst);
+	// 	index_init(lst);
 }
 
 void	rotate(t_lst **lst, char *mesg)
@@ -49,6 +55,8 @@ void	rotate(t_lst **lst, char *mesg)
 		pile_addback(lst, temp);
 		printf("%s", mesg);
 	}
+	// if(lst);
+	// 	index_init(lst);
 }
 
 void	reverse_rotate(t_lst **lst, char *mesg)
@@ -63,4 +71,6 @@ void	reverse_rotate(t_lst **lst, char *mesg)
 		pile_addfront(lst, &temp);
 		printf("%s", mesg);
 	}
+	// if(lst);
+	// 	index_init(lst);
 }
