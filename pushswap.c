@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:32:49 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/05 18:47:45 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/05 19:10:54 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ int	main(int argc, char **argv)
 	b = NULL;
 	while (i < argc)
 		pile_addback(&a, lstnew(ft_atoi(argv[i++]), info));
-	if(execute(&a, &b, info) == 1)
-		return(printf("Error\n"), 1);
+	if(lstlast(a)->index > 0)
+		if(execute(&a, &b, info) == 1)
+			return(printf("Error\n"), 1);
 	make_order(&a);
-	print_list(a);
 	return (0);
 }

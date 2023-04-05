@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:21:20 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/05 12:54:24 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/05 19:10:14 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_lst	*lstlast(t_lst *lst)
 {
 	if (!lst)
 		return (NULL);
+	index_init(&lst);
 	while (lst->next)
 		lst = lst->next;
 	return (lst);
