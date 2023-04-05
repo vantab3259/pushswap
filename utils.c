@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 15:34:07 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/03 23:14:11 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/05 18:31:06 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_atoi(char *nptr)
 	sign = 1;
 	num = 0;
 	i = 0;
-	if((nptr[i] >= '0' && nptr[i] <= '9'))
+	if ((nptr[i] >= '0' && nptr[i] <= '9') || nptr[i] == '-' || nptr[i] == '+' )
 	{
 		if (nptr[i] == '-' || nptr[i] == '+')
 		{
@@ -36,7 +36,64 @@ int	ft_atoi(char *nptr)
 		}
 		return (num * sign);
 	}
-	return(1);
+	return (1);
+}
+
+long	ft_atol(char *nptr)
+{
+	int	i;
+	long	sign;
+	long	num;
+
+	sign = 1;
+	num = 0;
+	i = 0;
+	if ((nptr[i] >= '0' && nptr[i] <= '9'|| nptr[i] == '-' || nptr[i] == '+' ))
+	{
+		if (nptr[i] == '-' || nptr[i] == '+')
+		{
+			if (nptr[i] == '-')
+				sign *= -1;
+			i++;
+		}
+		while (nptr[i] >= '0' && nptr[i] <= '9')
+		{
+			num = (num * 10) + (nptr[i] - '0');
+			i++;
+		}
+		if(nptr[i])
+			return(2147483650);
+		return (num * sign);
+	}
+	
+	return (2147483650);
+}
+
+int	ft_doublon(t_lst *lst_a)
+{
+	t_lst *tmp;
+	t_lst *tmpk;
+	int		k;
+	
+	tmp = lst_a;
+	tmp = tmp->next;
+	tmpk = lst_a;
+	k = tmpk->val;
+	while(tmpk)
+	{
+		while(tmp)
+		{
+			if(tmp->val == k && tmp != tmpk)
+				return(1);
+			tmp = tmp->next;
+		}
+		tmpk = tmpk->next;
+		if (tmpk != NULL)
+			k = tmpk->val;
+		tmp = lst_a;
+		
+	}
+	return(0);
 }
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
@@ -57,5 +114,3 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
-
-

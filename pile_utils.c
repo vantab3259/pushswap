@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 19:35:28 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/05 00:03:09 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/05 13:13:55 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,49 +28,6 @@ void	index_init(t_lst **lst)
 	tmp->index = i;
 }
 
-// pantheon des fonctions
-// void	make_order(t_lst **lst)
-// {
-// 	t_lst	*tmp;
-// 	int		v1;
-// 	int		i;
-
-// 	i = 0;
-// 	tmp = *lst;
-// 	v1 = tmp->val;
-// 	if(a_is_sorted(tmp) == 1)
-// 		return ;
-// 	while (tmp)
-// 	{
-// 		if (tmp->val >tmp->next->val)
-// 		{
-// 			v1 = tmp->val;
-// 			i = tmp->index;
-// 			break ;
-// 		}
-// 		tmp = tmp->next;
-// 	}
-// 	// printf("v1:%d\n ", v1);
-// 	// printf("i:%d\n ", i);
-// 	if (i < (lstlast(*lst)->index / 2))
-// 	{
-// 		while (i >= 0)
-// 		{
-// 			rotate(lst, "ra\n");
-// 			i--;
-// 		}
-// 	}
-// 	else
-// 	{
-// 		while (i-1 <= lstlast(*lst)->index)
-// 		{
-// 			reverse_rotate(lst, "rra\n");
-// 			i++;
-// 		}
-// 	}
-
-// }
-
 void	make_order(t_lst **lst)
 {
 	t_lst	*tmp;
@@ -85,7 +42,7 @@ void	make_order(t_lst **lst)
 			ind_min = tmp->index;
 		tmp = tmp->next;
 	}
-	if (ind_min < (size + 1) / 2)
+	if (ind_min <= (size + 1) / 2)
 	{
 		while (--ind_min > -1)
 			rotate(lst, "ra\n");

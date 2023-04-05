@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 20:19:54 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/04 23:51:49 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/05 17:00:42 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	search(t_lst *lst, int valeur)
 		}
 		tmp = tmp->next;
 	}
-	//printf("l'index trouve pour le nombre %d est %d\n", valeur, i);
 	if (i == 20000)
 		return (is_minim(lst));
 	return (i);
@@ -86,40 +85,23 @@ int	how_many_moves(int index_a, int index_b, t_lst *a, t_lst *b)
 		return (rrarb);
 }
 
-void	ft_print_lst(t_lst *lst)
-{
-	//printf(" la liste ressemble a ca :\n");
-	while (lst)
-	{
-		//printf("%d : %d\n\n", lst->index, lst->val);
-		lst = lst->next;
-	}
-}
-
 t_tab	find_best_nbr(t_lst *a, t_lst *b)
 {
 	t_tab	info;
 
 	info.calcul = 5000;
 	info.val = b->val;
-	ft_print_lst(a);
-	ft_print_lst(b);
 	while (b)
 	{
-		// printf("avec ce normbre : %d, je fais ce nombre de move : %d\n",
-		// b->val,
-		// 		how_many_moves(search(a, b->val), b->index, a, b));
 		if (how_many_moves(search(a, b->val), b->index, a, b) < info.calcul)
 		{
 			info.calcul = how_many_moves(search(a, b->val), b->index, a, b);
 			info.val = b->val;
 			info.ia = search(a, b->val);
-			//printf("l'index du grand frere A : %d\n", search(a, b->val));
 			info.ib = b->index;
 		}
 		b = b->next;
 	}
-	// printf("ia = %d ib= %d\n", info.ia, info.ib);
 	return (info);
 }
 
@@ -128,7 +110,6 @@ void	execute_le_retour(t_lst **a, t_lst **b)
 	t_tab	tmpinfo;
 
 	tmpinfo = find_best_nbr(*a, *b);
-	// printf("tmpinfo;%d\n", tmpinfo.calcul)
 	tmpinfo.mouv = wich_combo_do(tmpinfo.ia, tmpinfo.ib, *a, *b);
 	if (tmpinfo.mouv == 0)
 		mouv_if_rr(a, b, tmpinfo);
@@ -140,52 +121,30 @@ void	execute_le_retour(t_lst **a, t_lst **b)
 		mouv_if_rrarb(a, b, tmpinfo);
 }
 
-void	execute(t_lst **a, t_lst **b, t_tab *info)
+int	execute(t_lst **a, t_lst **b, t_tab *info)
 {
 	int	i;
 
-	if (how_many_part(*a) == 0)
+	if(ft_doublon(*a) == 1)
+		return(1);
+	if ((*a)->next->next)
 	{
 		while ((*a)->next->next->next)
 			push_one_in_second(a, b, "pb\n");
 	}
 	if (list_is_range(*a) == 0)
 		swap(a, "sa\n");
-	index_init(b);
-	i = lstlast(*b)->index;
-	while (i != -1)
+	if (b && *b)
 	{
-		//print_list(*a);
-		//print_list(*b);
 		index_init(b);
-		index_init(a);
-		execute_le_retour(a, b);
-		//print_list(*a);
-		i--;
+		i = lstlast(*b)->index;
+		while (i != -1)
+		{
+			index_init(b);
+			index_init(a);
+			execute_le_retour(a, b);
+			i--;
+		}
 	}
 	index_init(a);
-	// execute_le_retour(a, b, info);
 }
-/*
-//pantheon des fonctions
-int	searchwhile(t_lst *lst_a, t_lst *lst_b)
-{
-	t_lst *a;
-	t_lst *b;
-	int i;
-
-	i = 200;
-	a = lst_a;
-	b = lst_b;
-	index_init(&a);
-	index_init(&b);
-	while (b->next)
-	{
-		if (search(a, b->val) < i)
-		{
-			i = search(a, b->val);
-		}
-		b = b->next;
-	}
-	return (i);
-} */

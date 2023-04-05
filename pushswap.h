@@ -1,5 +1,7 @@
 #include "ft_printf/ft_printf.h"
 #include <stdlib.h>
+#define INT_MAX  2147483647
+#define INT_MIN  -2147483648
 
 typedef struct s_tab
 {
@@ -23,6 +25,8 @@ typedef struct s_lst
 
 //utils
 int					ft_atoi(char *n);
+long				ft_atol(char *n);
+int					ft_doublon(t_lst *lst_a);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 
 //lst utils
@@ -59,8 +63,8 @@ void				reverse_rotate(t_lst **lst, char *mesg);
 void				rotate_all(t_lst **lsta, t_lst **lstb, char *rr);
 void				reverse_rotate_all(t_lst **lsta, t_lst **lstb, char *msg);
 void				swap_all(t_lst **lsta, t_lst **lstb, char *ss);
-int					is_minim(t_lst *lst);
-int					is_max(t_lst *lst);
+int					find_max_lst(t_lst *lst);
+int					find_min_lst(t_lst *lst);
 
 //mouv
 void				mouv_if_rr(t_lst **a, t_lst **b, t_tab information);
@@ -75,12 +79,13 @@ int					how_many_moves(int index_a, int index_b, t_lst *a,
 						t_lst *b);
 int					wich_combo_do(int index_a, int index_b, t_lst *a, t_lst *b);
 t_tab				find_best_nbr(t_lst *a, t_lst *b);
-void				execute(t_lst **a, t_lst **b, t_tab *info);
+int				execute(t_lst **a, t_lst **b, t_tab *info);
 
 //
-int					find_max_lst(t_lst *lst);
-int					find_min_lst(t_lst *lst);
+
 
 //les oublier
-//void				*ft_lstadd_back(t_lst *lst, t_lst *next);
-//int					searchwhile(t_lst *lst_a, t_lst *lst_b);
+int					is_minim(t_lst *lst);
+int					is_max(t_lst *lst);
+void				*ft_lstadd_back(t_lst *lst, t_lst *next);
+int					searchwhile(t_lst *lst_a, t_lst *lst_b);

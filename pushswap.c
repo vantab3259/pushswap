@@ -6,13 +6,13 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:32:49 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/05 00:15:43 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/05 18:47:45 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-/* int		verif_build(t_lst **a, t_lst **b,t_tab *info, int argc, char **argv)
+int		v(t_lst **a, t_lst **b,t_tab *info, int argc, char **argv)
 {
 	int	i;
 
@@ -20,7 +20,6 @@
 	
 	return(1);
 }
- */
 
 int	main(int argc, char **argv)
 {
@@ -29,24 +28,23 @@ int	main(int argc, char **argv)
 	t_tab *info;
 	int i;
 
-	i = 2;
+	i = 1;
 	info = malloc(sizeof(info));
 	if (!info)
 		return (1);
+	while (i < argc)
+		if(ft_atol(argv[i]) > INT_MAX || ft_atol(argv[i++]) < INT_MIN)
+			return (printf("Error\n"), 1);
+	i = 2;
 	a = lstnew(ft_atoi(argv[1]), info);
 	if (!a)
 		return (printf("Error\n"), free(info), 1);
 	b = NULL;
 	while (i < argc)
-	{
-		pile_addback(&a, lstnew(ft_atoi(argv[i]), info));
-		i++;
-	}
-	// index_init(&a);
-	// index_init(&b);
-	execute(&a, &b, info);
+		pile_addback(&a, lstnew(ft_atoi(argv[i++]), info));
+	if(execute(&a, &b, info) == 1)
+		return(printf("Error\n"), 1);
 	make_order(&a);
 	print_list(a);
-	// print_list(b);
 	return (0);
 }

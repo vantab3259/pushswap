@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 18:46:16 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/05 00:33:14 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/05 12:51:12 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	reverse_rotate_all(t_lst **lsta, t_lst **lstb, char *msg)
 	printf("%s", msg);
 }
 
-// return value max
 int	is_max(t_lst *lst)
 {
 	int	max;
@@ -48,7 +47,6 @@ int	is_max(t_lst *lst)
 	return (max);
 }
 
-// return index min (no sense)
 int	is_minim(t_lst *lst)
 {
 	t_lst	*tmp;
