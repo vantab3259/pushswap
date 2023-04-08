@@ -6,13 +6,13 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 19:35:28 by mudoh             #+#    #+#             */
-/*   Updated: 2023/03/27 01:56:36 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/08 17:19:53 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	a_is_sorted(t_lst *lst_a)
+/* int	a_is_sorted(t_lst *lst_a)
 {
 	t_lst *tmp;
 
@@ -25,9 +25,9 @@ int	a_is_sorted(t_lst *lst_a)
 	}
 	printf("liste deja triee!\n");
 	exit(0);
-}
+} */
 
-int	list_is_range(t_lst *lst)
+/* int	list_is_range(t_lst *lst)
 {
 	t_lst *tmp;
 	t_lst *jump;
@@ -48,9 +48,9 @@ int	list_is_range(t_lst *lst)
 		return(0);
 	else
 		return(1);	
-}
+} */
 
-int	tri_trois_a(t_lst **lst)
+/* int	tri_trois_a(t_lst **lst)
 {
 	if((*lst)->val < (*lst)->next->val)
 	{
@@ -75,8 +75,8 @@ int	tri_trois_a(t_lst **lst)
 	}
 	return(0);
 }
-
-void	index_init(t_lst **lst)
+ */
+/* void	index_init(t_lst **lst)
 {
 	t_lst	*tmp;
 	int		i;
@@ -90,9 +90,9 @@ void	index_init(t_lst **lst)
 		i++;
 	}
 	
-}
+} */
 
-void	firststep(t_lst **lst_a, t_lst **lst_b)
+/* void	firststep(t_lst **lst_a, t_lst **lst_b)
 {
 	index_init(lst_a);
 
@@ -110,7 +110,7 @@ void	firststep(t_lst **lst_a, t_lst **lst_b)
 				push_b(&lst_a, &lst_b);
 		}
 		print_list(lst_a);
-		print_list(lst_b); */
+		print_list(lst_b);
 }
 
 int		secondstep(t_lst *lst_a, t_lst *lst_b)
@@ -119,3 +119,4 @@ int		secondstep(t_lst *lst_a, t_lst *lst_b)
 	
 	tmp = lst_b;
 } 
+ */

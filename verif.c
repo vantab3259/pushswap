@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:02:27 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/04 23:51:16 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/08 17:01:24 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int	a_is_sorted(t_lst *lst_a)
 }
 
 // au pantheon des fonctions
-int	tri_trois_a(t_lst **lst)
+/* int	tri_trois_a(t_lst **lst)
 {
 	// if ((*lst)->val < (*lst)->next->val)
 	// {
@@ -151,4 +151,4 @@ int	tri_trois_a(t_lst **lst)
 	// 	}
 	// }
 	return (0);
-}
+} */
