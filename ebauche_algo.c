@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 20:19:54 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/08 17:30:12 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/10 17:30:33 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ t_tab	find_best_nbr(t_lst *a, t_lst *b)
 	{
 		if (how_many_moves(search(a, b->val), b->index, a, b) < info.calcul)
 		{
+		
 			info.calcul = how_many_moves(search(a, b->val), b->index, a, b);
 			info.val = b->val;
 			info.ia = search(a, b->val);
@@ -108,7 +109,7 @@ t_tab	find_best_nbr(t_lst *a, t_lst *b)
 void	execute_le_retour(t_lst **a, t_lst **b)
 {
 	t_tab	tmpinfo;
-
+	
 	tmpinfo = find_best_nbr(*a, *b);
 	tmpinfo.mouv = wich_combo_do(tmpinfo.ia, tmpinfo.ib, *a, *b);
 	if (tmpinfo.mouv == 0)
@@ -119,9 +120,12 @@ void	execute_le_retour(t_lst **a, t_lst **b)
 		mouv_if_rarrb(a, b, tmpinfo);
 	if (tmpinfo.mouv == 3)
 		mouv_if_rrarb(a, b, tmpinfo);
+	index_init(a);
+	if(b && (*b))
+		index_init(b);
 }
 
-int	execute(t_lst **a, t_lst **b, t_tab *info)
+int	execute(t_lst **a, t_lst **b)
 {
 	int	i;
 
@@ -137,16 +141,15 @@ int	execute(t_lst **a, t_lst **b, t_tab *info)
 	if (b && *b)
 	{
 		index_init(b);
+		index_init(a);
 		i = lstlast(*b)->index;
 		while (i != -1)
 		{
-			print_list(*b);
-			print_list(*a);
 			index_init(b);
 			index_init(a);
 			execute_le_retour(a, b);
 			i--;
 		}
 	}
-	index_init(a);
+	return(0);
 }

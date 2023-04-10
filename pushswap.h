@@ -79,7 +79,7 @@ int					how_many_moves(int index_a, int index_b, t_lst *a,
 						t_lst *b);
 int					wich_combo_do(int index_a, int index_b, t_lst *a, t_lst *b);
 t_tab				find_best_nbr(t_lst *a, t_lst *b);
-int				execute(t_lst **a, t_lst **b, t_tab *info);
+int					execute(t_lst **a, t_lst **b);
 
 //
 

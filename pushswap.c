@@ -6,20 +6,11 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:32:49 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/08 17:20:30 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/10 17:30:20 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
-int		v(t_lst **a, t_lst **b,t_tab *info, int argc, char **argv)
-{
-	int	i;
-
-	i = 2;
-	
-	return(1);
-}
 
 int	main(int argc, char **argv)
 {
@@ -42,10 +33,8 @@ int	main(int argc, char **argv)
 	b = NULL;
 	while (i < argc)
 		pile_addback(&a, lstnew(ft_atoi(argv[i++]), info));
-	if(lstlast(a)->index > 0)
-		if(execute(&a, &b, info) == 1)
-			return(printf("Error\n"), 1);
+	if(execute(&a, &b) == 1)
+		return(printf("Errorr\n"), 1);
 	make_order(&a);
-	print_list(a);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 18:46:16 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/05 12:51:12 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/08 18:11:55 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,15 @@ int	is_minim(t_lst *lst)
 	i = 0;
 	tmp = lst;
 	vmin = tmp->val;
-	while (tmp->next)
+	while (tmp)
 	{
-		tmp = tmp->next;
+		
 		if (tmp->val < vmin)
 		{
 			vmin = tmp->val;
 			i = tmp->index;
 		}
+		tmp = tmp->next;
 	}
 	return (i);
 }

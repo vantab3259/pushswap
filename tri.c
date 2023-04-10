@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 19:35:28 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/08 17:19:53 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/08 17:57:33 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@
 		}
 	index_init(lst_b);
 	tri_trois_a(lst_a);
-	/* 	else
+ 	else
 		while(lst_a->next->next->next)
 		{
 			if(lst_a->val < 10)

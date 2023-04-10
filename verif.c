@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:02:27 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/08 17:01:24 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/08 17:58:22 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	how_many_part(t_lst *lst_a)
 	int		i;
 
 	tmp = lst_a;
-	if (lstlast(lst_a)->index > 100)
+	if (lstlast(tmp)->index > 100)
 		i = 1;
 	else
 		i = 0;
