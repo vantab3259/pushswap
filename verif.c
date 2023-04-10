@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:02:27 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/08 17:58:22 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/10 18:25:24 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,30 +37,6 @@ int	how_many_part(t_lst *lst_a)
 		i = 0;
 	return (i);
 }
-
-// pantheon des fonctions
-// int	list_is_range(t_lst *lst)
-// {
-// 	t_lst	*tmp;
-// 	t_lst	*jump;
-
-// 	tmp = lst;
-// 	while (tmp->next && tmp->val < tmp->next->val)
-// 		tmp = tmp->next;
-// 	if (tmp->next != NULL)
-// 	{
-// 		tmp = tmp->next;
-// 		jump = tmp;
-// 	}
-// 	else
-// 		return (1);
-// 	while (jump->next && jump->val < jump->next->val)
-// 		jump = jump->next;
-// 	if (jump->val < lst->val)
-// 		return (1);
-// 	else
-// 		return (0);
-// }
 
 int	find_max_lst(t_lst *lst)
 {
@@ -97,7 +73,9 @@ int	list_is_range(t_lst *lst)
 
 	max = find_max_lst(lst);
 	min = find_min_lst(lst);
-	while (lst->next)
+	/* printf("min = %d\n", min);
+	printf("max = %d\n", max); */
+	while (lst)
 	{
 		if (lst->val == max)
 		{

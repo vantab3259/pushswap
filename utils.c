@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 15:34:07 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/08 17:58:59 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/10 18:36:25 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ long	ft_atol(char *nptr)
 	sign = 1;
 	num = 0;
 	i = 0;
-	if ((nptr[i] >= '0' && nptr[i] <= '9')|| nptr[i] == '-' || nptr[i] == '+' )
+	if ((nptr[i] >= '0' && nptr[i] <= '9'|| nptr[i] == '-' || nptr[i] == '+' ))
 	{
 		if (nptr[i] == '-' || nptr[i] == '+')
 		{
@@ -65,7 +65,7 @@ long	ft_atol(char *nptr)
 			return(2147483650);
 		return (num * sign);
 	}
-	
+
 	return (2147483650);
 }
 

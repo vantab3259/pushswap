@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 20:19:54 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/10 17:30:33 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/10 18:35:36 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ int	wich_combo_do(int index_a, int index_b, t_lst *a, t_lst *b)
 	int	rrr;
 
 	rrr = 1 + (lstlast(b)->index - index_b);
-	if ((lstlast(a)->index - index_a) >= (lstlast(b)->index - index_b))
+	if ((lstlast(a)->index - index_a) > (lstlast(b)->index - index_b))
 		rrr = 1 + (lstlast(a)->index - index_a);
 	rr = index_b;
-	if (index_a >= index_b)
+	if (index_a > index_b)
 		rr = index_a;
 	rarrb = index_a + (lstlast(b)->index - index_b) + 1;
 	rrarb = index_b + (lstlast(a)->index - index_a) + 1;
@@ -58,6 +58,7 @@ int	wich_combo_do(int index_a, int index_b, t_lst *a, t_lst *b)
 		return (2);
 	if (rrarb <= rarrb && rrarb <= rrr && rrarb <= rr)
 		return (3);
+	return(0);
 }
 
 int	how_many_moves(int index_a, int index_b, t_lst *a, t_lst *b)
@@ -75,14 +76,15 @@ int	how_many_moves(int index_a, int index_b, t_lst *a, t_lst *b)
 		rr = index_a;
 	rarrb = index_a + (lstlast(b)->index - index_b) + 1;
 	rrarb = index_b + (lstlast(a)->index - index_a) + 1;
-	if (rr < rarrb && rr < rrr && rr < rrarb)
+	if (rr <= rarrb && rr <= rrr && rr <= rrarb)
 		return (rr);
-	if (rrr < rarrb && rrr < rr && rrr < rrarb)
+	if (rrr <= rarrb && rrr <= rr && rrr <= rrarb)
 		return (rrr);
-	if (rarrb < rr && rarrb < rrr && rarrb < rrarb)
+	if (rarrb <= rr && rarrb <= rrr && rarrb <= rrarb)
 		return (rarrb);
-	if (rrarb < rarrb && rrarb < rrr && rrarb < rr)
+	if (rrarb <= rarrb && rrarb <= rrr && rrarb <= rr)
 		return (rrarb);
+	return(rr);
 }
 
 t_tab	find_best_nbr(t_lst *a, t_lst *b)
@@ -127,7 +129,7 @@ void	execute_le_retour(t_lst **a, t_lst **b)
 
 int	execute(t_lst **a, t_lst **b)
 {
-	int	i;
+	int i;
 
 	if(ft_doublon(*a) == 1)
 		return(1);
@@ -136,7 +138,7 @@ int	execute(t_lst **a, t_lst **b)
 		while ((*a)->next->next->next)
 			push_one_in_second(a, b, "pb\n");
 	}
-	if (list_is_range(*a) == 0)
+	if ((*a)->next->next && list_is_range(*a) == 0)
 		swap(a, "sa\n");
 	if (b && *b)
 	{

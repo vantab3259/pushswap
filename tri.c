@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 19:35:28 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/08 17:57:33 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/10 18:15:49 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,74 +49,3 @@
 	else
 		return(1);	
 } */
-
-/* int	tri_trois_a(t_lst **lst)
-{
-	if((*lst)->val < (*lst)->next->val)
-	{
-		reverse_rotate_a((lst));
-		a_is_sorted(*lst);
-		swap_a(*lst);
-	}	
-	else
-	{
-		if((*lst)->val < (*lst)->next->next->val)
-			swap_a((*lst));
-		else
-		{
-			if((*lst)->next->val < (*lst)->next->next->val)
-				rotate_a(lst);
-			else
-			{
-				rotate_a(lst);
-				swap_a(*lst);
-			}
-		}	
-	}
-	return(0);
-}
- */
-/* void	index_init(t_lst **lst)
-{
-	t_lst	*tmp;
-	int		i;
-
-	tmp = *lst;
-	i = 0;
-	while (tmp->next != NULL)
-	{
-		tmp->index = i;
-		tmp = tmp->next;
-		i++;
-	}
-	
-} */
-
-/* void	firststep(t_lst **lst_a, t_lst **lst_b)
-{
-	index_init(lst_a);
-
-	if (how_many_part(*lst_a) == 0)
-		while ((*lst_a)->next->next->next)
-		{
-			push_b(lst_a, lst_b);
-		}
-	index_init(lst_b);
-	tri_trois_a(lst_a);
- 	else
-		while(lst_a->next->next->next)
-		{
-			if(lst_a->val < 10)
-				push_b(&lst_a, &lst_b);
-		}
-		print_list(lst_a);
-		print_list(lst_b);
-}
-
-int		secondstep(t_lst *lst_a, t_lst *lst_b)
-{
-	t_lst *tmp;
-	
-	tmp = lst_b;
-} 
- */
