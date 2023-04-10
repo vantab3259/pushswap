@@ -6,17 +6,14 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 17:11:29 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/05 12:55:59 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/10 20:30:37 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	mouv_if_rr(t_lst **a, t_lst **b, t_tab information)
+void	mouv_if_rr(t_lst **a, t_lst **b, t_tab info)
 {
-	t_tab	info;
-
-	info = information;
 
 	while (info.ia != 0 && info.ib != 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 20:19:54 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/10 18:35:36 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/10 22:25:13 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	wich_combo_do(int index_a, int index_b, t_lst *a, t_lst *b)
 		return (2);
 	if (rrarb <= rarrb && rrarb <= rrr && rrarb <= rr)
 		return (3);
-	return(0);
+	return (0);
 }
 
 int	how_many_moves(int index_a, int index_b, t_lst *a, t_lst *b)
@@ -84,7 +84,7 @@ int	how_many_moves(int index_a, int index_b, t_lst *a, t_lst *b)
 		return (rarrb);
 	if (rrarb <= rarrb && rrarb <= rrr && rrarb <= rr)
 		return (rrarb);
-	return(rr);
+	return (rr);
 }
 
 t_tab	find_best_nbr(t_lst *a, t_lst *b)
@@ -95,9 +95,11 @@ t_tab	find_best_nbr(t_lst *a, t_lst *b)
 	info.val = b->val;
 	while (b)
 	{
+		// printf("wtf pour le nombre %d je trouve l'index %d\n", b->val, search(a,
+		// 		b->val));
+		// print_list(a);
 		if (how_many_moves(search(a, b->val), b->index, a, b) < info.calcul)
 		{
-		
 			info.calcul = how_many_moves(search(a, b->val), b->index, a, b);
 			info.val = b->val;
 			info.ia = search(a, b->val);
@@ -111,9 +113,10 @@ t_tab	find_best_nbr(t_lst *a, t_lst *b)
 void	execute_le_retour(t_lst **a, t_lst **b)
 {
 	t_tab	tmpinfo;
-	
+
 	tmpinfo = find_best_nbr(*a, *b);
 	tmpinfo.mouv = wich_combo_do(tmpinfo.ia, tmpinfo.ib, *a, *b);
+	// printf("je trouve le combo : %d\n", tmpinfo.mouv);
 	if (tmpinfo.mouv == 0)
 		mouv_if_rr(a, b, tmpinfo);
 	if (tmpinfo.mouv == 1)
@@ -123,16 +126,16 @@ void	execute_le_retour(t_lst **a, t_lst **b)
 	if (tmpinfo.mouv == 3)
 		mouv_if_rrarb(a, b, tmpinfo);
 	index_init(a);
-	if(b && (*b))
+	if (b && (*b))
 		index_init(b);
 }
 
 int	execute(t_lst **a, t_lst **b)
 {
-	int i;
+	int	i;
 
-	if(ft_doublon(*a) == 1)
-		return(1);
+	if (ft_doublon(*a) == 1)
+		return (1);
 	if ((*a)->next->next)
 	{
 		while ((*a)->next->next->next)
@@ -153,5 +156,5 @@ int	execute(t_lst **a, t_lst **b)
 			i--;
 		}
 	}
-	return(0);
+	return (0);
 }

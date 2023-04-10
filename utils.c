@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 15:34:07 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/10 18:36:25 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/10 20:04:16 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_atoi(char *nptr)
 	sign = 1;
 	num = 0;
 	i = 0;
-	if ((nptr[i] >= '0' && nptr[i] <= '9') || nptr[i] == '-' || nptr[i] == '+' )
+	if ((nptr[i] >= '0' && nptr[i] <= '9')|| nptr[i] == '-' || nptr[i] == '+' )
 	{
 		if (nptr[i] == '-' || nptr[i] == '+')
 		{
@@ -48,7 +48,7 @@ long	ft_atol(char *nptr)
 	sign = 1;
 	num = 0;
 	i = 0;
-	if ((nptr[i] >= '0' && nptr[i] <= '9'|| nptr[i] == '-' || nptr[i] == '+' ))
+	if ((nptr[i] >= '0' && nptr[i] <= '9') || nptr[i] == '-' || nptr[i] == '+')
 	{
 		if (nptr[i] == '-' || nptr[i] == '+')
 		{

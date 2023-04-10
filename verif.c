@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:02:27 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/10 18:25:24 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/10 20:20:35 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,10 @@ int	list_is_range(t_lst *lst)
 	min = find_min_lst(lst);
 	/* printf("min = %d\n", min);
 	printf("max = %d\n", max); */
-	while (lst)
+	while (lst->next)
 	{
-		if (lst->val == max)
-		{
-			if (lst->next->val != min)
+		if (lst->val == max && lst->next->val != min)
 				return (0);
-		}
 		else if (lst->val > lst->next->val)
 			return (0);
 		lst = lst->next;
