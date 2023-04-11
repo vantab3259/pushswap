@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 20:19:54 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/10 22:25:13 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/11 15:55:38 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,13 +137,11 @@ int	execute(t_lst **a, t_lst **b)
 	if (ft_doublon(*a) == 1)
 		return (1);
 	if ((*a)->next->next)
-	{
 		while ((*a)->next->next->next)
 			push_one_in_second(a, b, "pb\n");
-	}
 	if ((*a)->next->next && list_is_range(*a) == 0)
 		swap(a, "sa\n");
-	if (b && *b)
+	if (b && (*b))
 	{
 		index_init(b);
 		index_init(a);
@@ -156,5 +154,6 @@ int	execute(t_lst **a, t_lst **b)
 			i--;
 		}
 	}
+	index_init(a);
 	return (0);
 }
