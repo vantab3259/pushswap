@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 15:34:07 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/10 20:04:16 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/11 16:27:30 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,24 @@ long	ft_atol(char *nptr)
 	int	i;
 	long	sign;
 	long	num;
-
+	int	verif;
+	
+	verif = 1;
 	sign = 1;
 	num = 0;
 	i = 0;
 	if ((nptr[i] >= '0' && nptr[i] <= '9') || nptr[i] == '-' || nptr[i] == '+')
 	{
-		if (nptr[i] == '-' || nptr[i] == '+')
-		{
-			if (nptr[i] == '-')
-				sign *= -1;
-			i++;
-		}
+		if (nptr[i++] == '-')
+			sign *= -1;
+		i--;
 		while (nptr[i] >= '0' && nptr[i] <= '9')
 		{
+			verif = 0;
 			num = (num * 10) + (nptr[i] - '0');
 			i++;
 		}
-		if(nptr[i])
+		if(nptr[i] || verif == 1)
 			return(2147483650);
 		return (num * sign);
 	}
