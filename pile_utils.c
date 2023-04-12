@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 19:35:28 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/10 17:08:43 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/11 19:05:24 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,16 @@ void	push_number(t_lst **pile_a, int new_data)
 	new_element->val = new_data;
 	new_element->next = NULL;
 	pile_addback(pile_a, new_element);
+}
+
+void	free_list(t_lst **lst)
+{
+	t_lst	*temp;
+
+	while (*lst)
+	{
+		temp = (*lst)->next;
+		free(*lst);
+		*lst = temp;
+	}
 }

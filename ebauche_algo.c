@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 20:19:54 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/11 15:55:38 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/12 17:53:07 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,10 +132,8 @@ void	execute_le_retour(t_lst **a, t_lst **b)
 
 int	execute(t_lst **a, t_lst **b)
 {
-	int	i;
-
 	if (ft_doublon(*a) == 1)
-		return (1);
+		return (free((*a)->tab), free_list(a), 1);
 	if ((*a)->next->next)
 		while ((*a)->next->next->next)
 			push_one_in_second(a, b, "pb\n");
@@ -143,6 +141,7 @@ int	execute(t_lst **a, t_lst **b)
 		swap(a, "sa\n");
 	if (b && (*b))
 	{
+		int i;
 		index_init(b);
 		index_init(a);
 		i = lstlast(*b)->index;

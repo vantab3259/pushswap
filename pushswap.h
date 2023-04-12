@@ -35,6 +35,7 @@ t_lst				*lst_cut_head_and_save(t_lst **lst_a);
 t_lst				*lst_cut_end_and_save(t_lst *lst_a);
 t_lst				*lst_remove_head(t_lst *premiere_position);
 t_lst				*lstlast(t_lst *lst);
+void				free_list(t_lst **lst);
 
 //pile utils
 void				pile_addback(t_lst **lst, t_lst *new);
