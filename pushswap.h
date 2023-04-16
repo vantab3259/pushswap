@@ -1,7 +1,21 @@
-#include "ft_printf/ft_printf.h"
-#include <stdlib.h>
-#define INT_MAX  2147483647
-#define INT_MIN  -2147483648
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pushswap.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/16 20:38:53 by mudoh             #+#    #+#             */
+/*   Updated: 2023/04/16 20:44:11 by mudoh            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PUSHSWAP_H
+# define PUSHSWAP_H
+# include "ft_printf/ft_printf.h"
+# include <stdlib.h>
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
 
 typedef struct s_tab
 {
@@ -74,19 +88,16 @@ void				mouv_if_rarrb(t_lst **a, t_lst **b, t_tab information);
 void				mouv_if_rrarb(t_lst **a, t_lst **b, t_tab information);
 
 //tri
-
 int					search(t_lst *lst, int valeur);
 int					how_many_moves(int index_a, int index_b, t_lst *a,
 						t_lst *b);
 int					wich_combo_do(int index_a, int index_b, t_lst *a, t_lst *b);
 t_tab				find_best_nbr(t_lst *a, t_lst *b);
-int					execute(t_lst **a, t_lst **b);
+void				algo(t_lst **a, t_lst **b);
 
-//
-
-
-//les oublier
 int					is_minim(t_lst *lst);
 int					is_max(t_lst *lst);
 void				*ft_lstadd_back(t_lst *lst, t_lst *next);
 int					searchwhile(t_lst *lst_a, t_lst *lst_b);
+
+#endif

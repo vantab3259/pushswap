@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 15:34:07 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/11 16:27:30 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/16 19:52:37 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_atoi(char *nptr)
 	sign = 1;
 	num = 0;
 	i = 0;
-	if ((nptr[i] >= '0' && nptr[i] <= '9')|| nptr[i] == '-' || nptr[i] == '+' )
+	if ((nptr[i] >= '0' && nptr[i] <= '9') || nptr[i] == '-' || nptr[i] == '+')
 	{
 		if (nptr[i] == '-' || nptr[i] == '+')
 		{
@@ -41,11 +41,11 @@ int	ft_atoi(char *nptr)
 
 long	ft_atol(char *nptr)
 {
-	int	i;
+	int		i;
 	long	sign;
 	long	num;
-	int	verif;
-	
+	int		verif;
+
 	verif = 1;
 	sign = 1;
 	num = 0;
@@ -58,42 +58,39 @@ long	ft_atol(char *nptr)
 		while (nptr[i] >= '0' && nptr[i] <= '9')
 		{
 			verif = 0;
-			num = (num * 10) + (nptr[i] - '0');
-			i++;
+			num = (num * 10) + (nptr[i++] - '0');
 		}
-		if(nptr[i] || verif == 1)
-			return(2147483650);
+		if (nptr[i] || verif == 1)
+			return (2147483650);
 		return (num * sign);
 	}
-
 	return (2147483650);
 }
 
 int	ft_doublon(t_lst *lst_a)
 {
-	t_lst *tmp;
-	t_lst *tmpk;
+	t_lst	*tmp;
+	t_lst	*tmpk;
 	int		k;
-	
+
 	tmp = lst_a;
 	tmp = tmp->next;
 	tmpk = lst_a;
 	k = tmpk->val;
-	while(tmpk)
+	while (tmpk)
 	{
-		while(tmp)
+		while (tmp)
 		{
-			if(tmp->val == k && tmp != tmpk)
-				return(1);
+			if (tmp->val == k && tmp != tmpk)
+				return (1);
 			tmp = tmp->next;
 		}
 		tmpk = tmpk->next;
 		if (tmpk != NULL)
 			k = tmpk->val;
 		tmp = lst_a;
-		
 	}
-	return(0);
+	return (0);
 }
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
@@ -113,4 +110,17 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		n--;
 	}
 	return (0);
+}
+
+void	print_list(t_lst *list)
+{
+	t_lst	*tmp;
+
+	tmp = list;
+	while (tmp != NULL)
+	{
+		printf("%d ", tmp->val);
+		tmp = tmp->next;
+	}
+	printf("\n");
 }

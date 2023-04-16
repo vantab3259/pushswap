@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 21:36:33 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/05 12:53:54 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/16 19:45:20 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	rotate(t_lst **lst, char *mesg)
 
 void	reverse_rotate(t_lst **lst, char *mesg)
 {
-	t_lst *temp;
+	t_lst	*temp;
 
 	if (*lst != NULL)
 	{
