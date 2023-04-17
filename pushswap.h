@@ -6,14 +6,16 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 20:38:53 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/16 20:44:11 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/17 00:29:20 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSHSWAP_H
 # define PUSHSWAP_H
+
 # include "ft_printf/ft_printf.h"
 # include <stdlib.h>
+# include <stdio.h> 
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 

@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 18:46:16 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/16 19:46:11 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/16 23:30:53 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@ void	swap_all(t_lst **lsta, t_lst **lstb, char *ss)
 {
 	swap(lstb, "");
 	swap(lsta, "");
-	printf("%s\n", ss);
+	ft_printf("%s\n", ss);
 }
 
 void	rotate_all(t_lst **lsta, t_lst **lstb, char *rr)
 {
 	rotate(lstb, "");
 	rotate(lsta, "");
-	printf("%s\n", rr);
+	ft_printf("%s\n", rr);
 }
 
 void	reverse_rotate_all(t_lst **lsta, t_lst **lstb, char *msg)
 {
 	reverse_rotate(lstb, "");
 	reverse_rotate(lsta, "");
-	printf("%s", msg);
+	ft_printf("%s", msg);
 }
 
 int	is_max(t_lst *lst)

@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 15:34:07 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/16 19:52:37 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/17 00:57:07 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,21 +50,22 @@ long	ft_atol(char *nptr)
 	sign = 1;
 	num = 0;
 	i = 0;
-	if ((nptr[i] >= '0' && nptr[i] <= '9') || nptr[i] == '-' || nptr[i] == '+')
+	if (!((nptr[i] >= '0' && nptr[i] <= '9') || nptr[i] == '-'
+			|| nptr[i] == '+'))
+		return (2147483650);
+	if (nptr[i] == '-')
 	{
-		if (nptr[i++] == '-')
-			sign *= -1;
-		i--;
-		while (nptr[i] >= '0' && nptr[i] <= '9')
-		{
-			verif = 0;
-			num = (num * 10) + (nptr[i++] - '0');
-		}
-		if (nptr[i] || verif == 1)
-			return (2147483650);
-		return (num * sign);
+		sign *= -1;
+		i++;
 	}
-	return (2147483650);
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		verif = 0;
+		num = (num * 10) + (nptr[i++] - '0');
+	}
+	if (nptr[i] || verif == 1)
+		return (2147483650);
+	return (num * sign);
 }
 
 int	ft_doublon(t_lst *lst_a)
@@ -119,8 +120,8 @@ void	print_list(t_lst *list)
 	tmp = list;
 	while (tmp != NULL)
 	{
-		printf("%d ", tmp->val);
+		ft_printf("%d ", tmp->val);
 		tmp = tmp->next;
 	}
-	printf("\n");
+	ft_printf("\n");
 }
