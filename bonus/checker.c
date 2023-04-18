@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 23:24:13 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/18 04:18:01 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/18 04:44:23 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ int	next(t_lst **a, t_lst **b, t_tab *info)
 		if (getget(a, b, str))
 		{
 			get_next_line(1, 1);
-			return (free_list(a), free_list(b), free(str), ft_printf("Error\n"));
+			return (free_list(a), free_list(b), free(str),
+				ft_printf("Error\n"));
 		}
 		free(str);
 	}
@@ -91,10 +92,10 @@ int	verif(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	t_lst *a;
-	t_lst *b;
-	t_tab *info;
-	int i;
+	t_lst	*a;
+	t_lst	*b;
+	t_tab	*info;
+	int		i;
 
 	b = NULL;
 	i = 1;
@@ -114,7 +115,5 @@ int	main(int argc, char **argv)
 		next(&a, &b, info);
 	if (info)
 		free(info);
-	free_list(& a);
-	free_list(& b);
-	return (0);
+	return (free_list(&a), free_list(&b), 0);
 }

@@ -6,7 +6,7 @@
 /*   By: mudoh <mudoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:44:30 by mudoh             #+#    #+#             */
-/*   Updated: 2023/04/18 02:52:59 by mudoh            ###   ########.fr       */
+/*   Updated: 2023/04/18 04:45:42 by mudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ char	*get_next_line(int fd, int b)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
 	if (b)
-		return(free(tmp), NULL);
+		return (free(tmp), NULL);
 	tmp = read_and_addtotmp(tmp, fd);
 	if (!tmp)
 		return (NULL);
